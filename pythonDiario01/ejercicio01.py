@@ -34,9 +34,11 @@ def cheqcueva(CambiarCueva):
    
     if CambiarCueva == str(FriendlyCueva):
         print ("Te entrega el tesoro...")
+        # Añade 100 puntos a la puntuación.
         puntos += 100
     else:
         print ("El dragon te come de un bocado....")
+        # Imprime la puntuación y pone puntos a 0 para empezar de nuevo.
         print("Tu puntuación es: " + str(puntos))
         puntos = 0
         
