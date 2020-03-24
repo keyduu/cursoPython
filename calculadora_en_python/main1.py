@@ -35,7 +35,7 @@ class Calculadora():
     #end operar
 
     def click_numero(valor: str):
-        if valor != "."
+        if valor != ".":
             pantalla.insert(END, valor)
         else:
             if "." not in pantalla.get():
@@ -44,7 +44,7 @@ class Calculadora():
                 
     
     def click_operador(self, valor: str):
-        numero1 = 
+        numero1 = 0
         operador = valor
     #end click_operador
 
