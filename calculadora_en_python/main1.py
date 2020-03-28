@@ -1,37 +1,61 @@
 ##### IMPORTS #####
+import re
 from tkinter import Tk, Text, Button, END
+
 
 ##### FUNCIONES
 
 
 ##### CLASES #####
 class Calculadora():
-    ventana: Tk
-    texto_pantalla: Text
-    boton_0: Button
-    boton_1: Button
-    boton_2: Button
-    boton_3: Button
-    boton_4: Button
-    boton_5: Button
-    boton_6: Button
-    boton_7: Button
-    boton_8: Button
-    boton_9: Button
-    boton_0: Button
-    boton_decimal: Button
-    boton_resultado: Button
-    boton_borrar: Button
-    boton_suma: Button
-    boton_resta: Button
-    boton_multiplicacion: Button
-    boton_division: Button
+    ventana = Tk()
+    texto_pantalla = Text()
+    boton_0 = Button()
+    boton_1 = Button()
+    boton_2 = Button()
+    boton_3 = Button()
+    boton_4 = Button()
+    boton_5 = Button()
+    boton_6 = Button()
+    boton_7 = Button()
+    boton_8: Button()
+    boton_9: Button()
+    boton_0: Button()
+    boton_decimal: Button()
+    boton_resultado: Button(9)
+    boton_borrar: Button()
+    boton_suma: Button()
+    boton_resta = Button()
+    boton_multiplicacion = Button()
+    boton_division = Button()
 
     numero1 = None
     numero2 = None
     operador = ""
+    operacion_pendiente = False
 
-    def operar(self):
+    def operar(self, num1, num2, ope):
+        if ope == "suma":
+            resultado = num1 + num2
+        elif ope == "resta":
+            resultado = num1 - num2
+        elif ope == "multiplicación":
+            resultado = num1 * num2
+        elif ope == "division":
+            resultado = num1 / num2
+        if type(resultado) == "float":
+            res_temp = str(resultado)
+            if not re.match(r"\d\.[0]+", res_temp):
+                res = float(res_temp)
+            else:
+                res = int(res_temp)
+        else:
+            res = int(resultado)
+        return res
+
+    # end operar
+
+    def click_resultado(self):
         num1 = self.numero1
         num2 = self.numero2
         ope = self.operador
@@ -43,7 +67,7 @@ class Calculadora():
         elif ope == "multiplicación":
             resultado = num1 * num2
         elif ope == "division":
-            resultado == num1 / num2
+            resultado = num1 / num2
         if type(resultado) == "float":
             res_temp = str(resultado)
             if not re.match(r"\d\.[0]+", res_temp):
@@ -51,9 +75,15 @@ class Calculadora():
             else:
                 res = int(res_temp)
         else:
-            res = int(temp)
+            res = int(resultado)
+        self.pantalla.delete(0)
+        self.pantalla.insert(0, str(res))
+        self.numero1 = 0
+        self.numero2 = 0
+        self.operador = ""
+        self.operacion_pendiente = False
 
-    # end operar
+    # end click_resultado
 
     def click_numero(valor: str):
         if valor != ".":
@@ -63,12 +93,19 @@ class Calculadora():
                 pantalla.insert(END, valor)
 
     # end click_numero
-                
-    
+
     def click_operador(self, valor: str):
         numero1 = 0
         operador = valor
-    #end click_operador
+
+        if valor == "sumar"
+            self.operar()
+
+        self.pantalla.delete(0)
+        self.pantalla.insert(0, str(res))
+        self.numero1 = res
+
+    # end click_operador
 
     def __init__(self, parametro_ventana: Tk):
         self.ventana = parametro_ventana
@@ -106,10 +143,8 @@ class Calculadora():
         self.boton_0.grid(row=4, column=0, padx=5, pady=5, ipadx=5, ipady=5)
         self.boton_decimal = Button(self.ventana, text=".", command=lambda: self.click_numero("."))
         self.boton_decimal.grid(row=3, column=3, padx=5, pady=5, ipadx=5, ipady=5)
-       
-    #end constructor
 
-
+    # end constructor
 
 
 ##### MAIN #####
