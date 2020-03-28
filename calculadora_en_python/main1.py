@@ -26,13 +26,34 @@ class Calculadora():
     boton_resta: Button
     boton_multiplicacion: Button
     boton_division: Button
-    
-    numero1
-    numero2
+
+    numero1 = None
+    numero2 = None
+    operador = ""
 
     def operar(self):
-        pass
-    #end operar
+        num1 = self.numero1
+        num2 = self.numero2
+        ope = self.operador
+
+        if ope == "suma":
+            resultado = num1 + num2
+        elif ope == "resta":
+            resultado = num1 - num2
+        elif ope == "multiplicación":
+            resultado = num1 * num2
+        elif ope == "division":
+            resultado == num1 / num2
+        if type(resultado) == "float":
+            res_temp = str(resultado)
+            if not re.match(r"\d\.[0]+", res_temp):
+                res = float(res_temp)
+            else:
+                res = int(res_temp)
+        else:
+            res = int(temp)
+
+    # end operar
 
     def click_numero(valor: str):
         if valor != ".":
@@ -40,7 +61,8 @@ class Calculadora():
         else:
             if "." not in pantalla.get():
                 pantalla.insert(END, valor)
-    #end click_numero
+
+    # end click_numero
                 
     
     def click_operador(self, valor: str):
@@ -49,40 +71,40 @@ class Calculadora():
     #end click_operador
 
     def __init__(self, parametro_ventana: Tk):
-        ventana = parametro_ventana
-        ventana.title = "Calculadora"
+        self.ventana = parametro_ventana
+        self.ventana.title = "Calculadora"
 
         # La ventana tendrá una cuadrícula de 6 x 4
 
-        pantalla = Text(ventana)
-        pantalla.grid(row=0, column=0, columnspan=4, padx=5, pady=10)
-        boton_1 = Button(ventana, text="1", command=lambda: click_numero("1"))
-        boton_1.grid(row=1, column=0, padx=5, pady=5, ipadx=5, ipady=5)
-        boton_2 = Button(ventana, text="2", command=lambda: click_numero("2"))
-        boton_2.grid(row=1, column=1, padx=5, pady=5, ipadx=5, ipady=5)
-        boton_3 = Button(ventana, text="3", command=lambda: click_numero("3"))
-        boton_3.grid(row=1, column=2, padx=5, pady=5, ipadx=5, ipady=5)
-        boton_suma = Button(ventana, text="+")
-        boton_suma.grid(row=1, column=3, padx=5, pady=5, ipadx=5, ipady=5)
-        boton_4 = Button(ventana, text="4", command=lambda: click_numero("4"))
-        boton_4.grid(row=2, column=0, padx=5, pady=5, ipadx=5, ipady=5)
-        boton_5 = Button(ventana, text="5", command=lambda: click_numero("5"))
-        boton_5.grid(row=2, column=1, padx=5, pady=5, ipadx=5, ipady=5)
-        boton_6 = Button(ventana, text="6", command=lambda: click_numero("6"))
-        boton_6.grid(row=2, column=2, padx=5, pady=5, ipadx=5, ipady=5)
-        boton_resta = Button(ventana, text="-")
-        boton_resta.grid(row=2, column=3, padx=5, pady=5, ipadx=5, ipady=5)
-        boton_7 = Button(ventana, text="7", command=lambda: click_numero(pantalla, "7"))
-        boton_7.grid(row=3, column=0, padx=5, pady=5, ipadx=5, ipady=5)
-        boton_8 = Button(ventana, text="5", command=lambda: click_numero(pantalla, "8"))
-        boton_8.grid(row=3, column=1, padx=5, pady=5, ipadx=5, ipady=5)
-        boton_9 = Button(ventana, text="6", command=lambda: click_numero(pantalla, "9"))
-        boton_9.grid(row=3, column=2, padx=5, pady=5, ipadx=5, ipady=5)
-        boton_multiplicacion = Button(ventana, text="x")
-        boton_multiplicacion.grid(row=3, column=3, padx=5, pady=5, ipadx=5, ipady=5)
-        boton_0 = Button(ventana, text="7", command=lambda: click_numero(pantalla, "0"))
-        boton_0.grid(row=4, column=0, padx=5, pady=5, ipadx=5, ipady=5)
-        self.boton_decimal = Button(self.ventana, text=".", command=lambda: click_numero(pantalla, "."))
+        self.pantalla = Text(self.ventana)
+        self.pantalla.grid(row=0, column=0, columnspan=4, padx=5, pady=10)
+        self.boton_1 = Button(self.ventana, text="1", command=lambda: self.click_numero("1"))
+        self.boton_1.grid(row=1, column=0, padx=5, pady=5, ipadx=5, ipady=5)
+        self.boton_2 = Button(self.ventana, text="2", command=lambda: self.click_numero("2"))
+        self.boton_2.grid(row=1, column=1, padx=5, pady=5, ipadx=5, ipady=5)
+        self.boton_3 = Button(self.ventana, text="3", command=lambda: self.click_numero("3"))
+        self.boton_3.grid(row=1, column=2, padx=5, pady=5, ipadx=5, ipady=5)
+        self.boton_suma = self.Button(self.ventana, text="+")
+        self.boton_suma.grid(row=1, column=3, padx=5, pady=5, ipadx=5, ipady=5)
+        self.boton_4 = Button(self.ventana, text="4", command=lambda: self.click_numero("4"))
+        self.boton_4.grid(row=2, column=0, padx=5, pady=5, ipadx=5, ipady=5)
+        self.boton_5 = Button(self.ventana, text="5", command=lambda: self.click_numero("5"))
+        self.boton_5.grid(row=2, column=1, padx=5, pady=5, ipadx=5, ipady=5)
+        self.boton_6 = Button(self.ventana, text="6", command=lambda: self.click_numero("6"))
+        self.boton_6.grid(row=2, column=2, padx=5, pady=5, ipadx=5, ipady=5)
+        self.boton_resta = Button(self.ventana, text="-")
+        self.boton_resta.grid(row=2, column=3, padx=5, pady=5, ipadx=5, ipady=5)
+        self.boton_7 = Button(self.ventana, text="7", command=lambda: self.click_numero("7"))
+        self.boton_7.grid(row=3, column=0, padx=5, pady=5, ipadx=5, ipady=5)
+        self.boton_8 = Button(self.ventana, text="5", command=lambda: self.click_numero("8"))
+        self.boton_8.grid(row=3, column=1, padx=5, pady=5, ipadx=5, ipady=5)
+        self.boton_9 = Button(self.ventana, text="6", command=lambda: self.click_numero("9"))
+        self.boton_9.grid(row=3, column=2, padx=5, pady=5, ipadx=5, ipady=5)
+        self.boton_multiplicacion = Button(self.ventana, text="x")
+        self.boton_multiplicacion.grid(row=3, column=3, padx=5, pady=5, ipadx=5, ipady=5)
+        self.boton_0 = Button(self.ventana, text="7", command=lambda: self.click_numero("0"))
+        self.boton_0.grid(row=4, column=0, padx=5, pady=5, ipadx=5, ipady=5)
+        self.boton_decimal = Button(self.ventana, text=".", command=lambda: self.click_numero("."))
         self.boton_decimal.grid(row=3, column=3, padx=5, pady=5, ipadx=5, ipady=5)
        
     #end constructor
