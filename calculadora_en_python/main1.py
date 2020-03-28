@@ -3,9 +3,6 @@ import re
 from tkinter import Tk, Text, Button, END
 
 
-##### FUNCIONES
-
-
 ##### CLASES #####
 class Calculadora():
     ventana = Tk()
@@ -85,25 +82,18 @@ class Calculadora():
 
     # end click_resultado
 
-    def click_numero(valor: str):
+    def click_numero(self, valor):
         if valor != ".":
-            pantalla.insert(END, valor)
+            self.pantalla.insert(END, valor)
         else:
-            if "." not in pantalla.get():
-                pantalla.insert(END, valor)
+            if "." not in self.pantalla.get():
+                self.pantalla.insert(END, valor)
 
     # end click_numero
 
     def click_operador(self, valor: str):
         numero1 = 0
         operador = valor
-
-        if valor == "sumar"
-            self.operar()
-
-        self.pantalla.delete(0)
-        self.pantalla.insert(0, str(res))
-        self.numero1 = res
 
     # end click_operador
 
