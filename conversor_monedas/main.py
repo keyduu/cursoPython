@@ -11,7 +11,7 @@ import sys
 
 from PyQt5 import QtWidgets
 
-from conversor_monedas.ventanas import ventana_python
+from ventanas import ventana_python
 
 # ==== VARIABLES GLOBALES ==== #
 
