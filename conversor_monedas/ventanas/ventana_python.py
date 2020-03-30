@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'ventana_principal.ui'
+# Form implementation generated from reading ui file 'ventanas\ventana_principal.ui'
 #
 # Created by: PyQt5 UI code generator 5.13.2
 #
@@ -23,7 +23,7 @@ class Ui_MainWindow(object):
         font.setPointSize(14)
         self.boton_convertir_dolares.setFont(font)
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("coin-dollar.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap("ventanas\\coin-dollar.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.boton_convertir_dolares.setIcon(icon)
         self.boton_convertir_dolares.setIconSize(QtCore.QSize(32, 32))
         self.boton_convertir_dolares.setObjectName("boton_convertir_dolares")
@@ -34,7 +34,7 @@ class Ui_MainWindow(object):
         font.setPointSize(14)
         self.boton_convertir_yenes.setFont(font)
         icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap("coin-yen.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon1.addPixmap(QtGui.QPixmap("ventanas\\coin-yen.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.boton_convertir_yenes.setIcon(icon1)
         self.boton_convertir_yenes.setIconSize(QtCore.QSize(32, 32))
         self.boton_convertir_yenes.setObjectName("boton_convertir_yenes")
@@ -77,7 +77,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "Conversor de monedas"))
         self.boton_convertir_dolares.setText(_translate("MainWindow", "Convertir a Dolares"))
         self.boton_convertir_yenes.setText(_translate("MainWindow", "Convertir a Yenes"))
         self.label.setText(_translate("MainWindow", "Cantidad en Euros:"))

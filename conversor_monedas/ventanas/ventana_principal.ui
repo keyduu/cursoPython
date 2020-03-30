@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Conversor de monedas</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QPushButton" name="boton_convertir_dolares">

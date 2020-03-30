@@ -5,13 +5,17 @@
 # + Mostrar un icono en el boton correspondiente de conversion
 
 '''
-import sys
 
 # ==== IMPORTS ==== #
+import sys
+
 from PyQt5 import QtWidgets
-from ventanas import ventana_python
+
+from conversor_monedas.ventanas import ventana_python
 
 # ==== VARIABLES GLOBALES ==== #
+
+
 conversion_dolares = 1.11
 conversion_yenes = 119.15
 
