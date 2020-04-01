@@ -21,6 +21,9 @@ conversion_yenes = 119.15
 
 
 # ==== FUNCIONES ==== #
+def click_radio_button():
+    pass
+
 def transformar_a_dolares():
     introducido = ui.edit_euros.text()
     introducido_float = float(introducido.replace(",", "."))
@@ -53,8 +56,12 @@ ui = ventana_python.Ui_MainWindow()
 ui.setupUi(MainWindow)
 
 # todos los componentes puestos en la ventana por el designer estan ui
-ui.boton_convertir_dolares.clicked.connect(transformar_a_dolares)
-ui.boton_convertir_yenes.clicked.connect(transformar_a_yenes)
+ui.boton_convertir_dolares.toggled.connect(click_radio_button)
+ui.boton_convertir_yenes.toggle.connect(click_radio_button)
+ui.boton_convertir_libras.toggled.connect(click_radio_button)
+ui.boton_convertir_rublos.toggled.connect(click_radio_button)
+
+
 
 # se muestra la ventana principal de PyQt5
 MainWindow.show()
