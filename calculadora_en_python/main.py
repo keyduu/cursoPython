@@ -1,4 +1,10 @@
-from tkinter import Tk, Text, Button, END, re
+"""
+- Borrar el contenido de la pantalla antes de continuar, después de haber mostrado un resultado.
+- Incorporar un botón de borrado parcial(el actual sólo borra todo el contenido de la pantalla).
+- No mostrar decimales al hacer una división que da como resultado un entero.
+"""
+from tkinter import Tk, Text, Button, END
+import re
 
 ##### CLASES #####
 class Interfaz:
