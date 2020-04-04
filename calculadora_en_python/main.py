@@ -62,6 +62,7 @@ class Interfaz:
 
     # Controla el evento disparado al hacer click en un botón
     def click(self, texto, escribir):
+        patron = re.compile(r"^\d+\.0+")
         # Si el parámetro 'escribir' es True, entonces el parámetro texto debe mostrarse en pantalla. Si es False, no.
         if not escribir:
             # Sólo calcular si hay una operación a ser evaluada y si el usuario presionó '='
@@ -69,8 +70,17 @@ class Interfaz:
                 # Reemplazar el valor unicode de la división por el operador división de Python '/'
                 self.operacion = re.sub(u"\u00F7", "/", self.operacion)
                 resultado = str(eval(self.operacion))
-                self.operacion = ""
+                # MODIFICACION 1, Al pulsar el bontón de resultado, el resultado de la operación podrá ser el primer operador de la
+                # siguiente operación
+                #                self.operacion = ""
                 self.limpiarPantalla()
+                # MODIFICACION 3
+                # Si el resultado se puede mostrar como entero, se mostrará como tal.
+                if patron.match(resultado):
+                    resultado = str(int(float(resultado)))
+                # MODIFICACION 1, Al pulsar el bontón de resultado, el resultado de la operación podrá ser el primer operador de la
+                # siguiente operación
+                self.operacion = resultado
                 self.mostrarEnPantalla(resultado)
             # Si se presionó el botón de borrado, limpiar la pantalla
             elif texto == u"\u232B":
